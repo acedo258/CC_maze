@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christmas crackers maze · Verificador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Verificador oficial</div>
+    <h1 id="title">Christmas crackers maze</h1>
+  </header>
+  <div class="lights" id="lights" aria-hidden="true"></div>
+  <main class="stations" id="stations"></main>
+  <section class="final" id="final" hidden aria-live="polite"></section>
+  <p class="demo" id="demo" hidden></p>
+</div>
+
+<button class="gear" id="gear" title="Configurar (solo la organizadora)" aria-label="Configurar">⚙</button>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="ptitle">
+  <div class="panel">
+    <h2 id="ptitle">Configurar la partida</h2>
+    <p class="help">Las respuestas y los números se guardan cifrados: ni desde aquí ni mirando el código de la página se pueden recuperar. Los números del candado solo aparecen cuando todas las respuestas son correctas.</p>
+
+    <label for="cTitle">Título en pantalla</label>
+    <input id="cTitle" maxlength="60">
+
+    <h3>Pruebas, en orden</h3>
+    <div class="cols"><span></span><span>Nombre que verán</span><span>Respuesta correcta</span><span></span></div>
+    <div id="rows"></div>
+    <button class="pbtn alt" id="addRow" type="button">+ Añadir prueba</button>
+
+    <label for="cDigits">Combinación del candado (en el orden correcto)</label>
+    <input id="cDigits" inputmode="numeric" maxlength="8" placeholder="p. ej. 2512">
+    <p class="help">En pantalla saldrán desordenados.</p>
+
+    <div class="actions">
+      <button class="pbtn" id="save" type="button">Guardar y empezar partida</button>
+      <button class="pbtn alt" id="close" type="button">Cerrar</button>
+    </div>
+    <div class="perr" id="perr"></div>
+
+    <h3>Código de partida</h3>
+    <p class="help">Cópialo y guárdalo por si cambias de ordenador o se borra el navegador. Pegándolo aquí recuperas la partida sin volver a escribir las respuestas.</p>
+    <textarea id="code" spellcheck="false"></textarea>
+    <div class="actions">
+      <button class="pbtn alt" id="copy" type="button">Copiar código</button>
+      <button class="pbtn alt" id="load" type="button">Cargar este código</button>
+      <button class="pbtn warn" id="reset" type="button">Reiniciar progreso</button>
+    </div>
+    <div class="pok" id="pok"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

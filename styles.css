@@ -1,0 +1,89 @@
+:root{
+  --pine:#0e2620; --pine2:#143229; --line:#2b4b41; --cream:#f3ead6; --muted:#a7b6ab;
+  --gold:#e0ac4c; --berry:#c2384a; --mint:#7fc7a0; --sky:#7fb0dd;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  min-height:100vh; color:var(--cream);
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:radial-gradient(ellipse 120% 70% at 50% 0%, #1b3c32 0%, var(--pine) 60%) fixed, var(--pine);
+}
+.wrap{max-width:1100px;margin:0 auto;padding:clamp(24px,4vw,56px) clamp(16px,3vw,40px) 90px}
+header{text-align:center}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font-size:clamp(12px,1.1vw,15px);color:var(--gold);font-weight:700}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(36px,5.6vw,80px);margin:.18em 0 .12em;line-height:1.04}
+.sub{color:var(--muted);font-size:clamp(15px,1.45vw,21px);margin:0}
+
+/* Guirnalda de luces = progreso */
+.lights{display:flex;justify-content:center;gap:clamp(16px,3vw,44px);margin:34px 0 42px;position:relative;padding-top:4px}
+.lights::before{content:"";position:absolute;left:8%;right:8%;top:4px;height:2px;background:#33574a;border-radius:2px}
+.bulb{--c:var(--gold);width:clamp(18px,1.8vw,26px);height:clamp(26px,2.6vw,36px);margin-top:12px;position:relative;
+  border-radius:50% 50% 50% 50% / 40% 40% 60% 60%;background:#2f453c;transition:background .5s, box-shadow .5s}
+.bulb::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:44%;height:9px;background:#5d6e64;border-radius:2px}
+.bulb:nth-child(4n+2){--c:var(--berry)} .bulb:nth-child(4n+3){--c:var(--mint)} .bulb:nth-child(4n+4){--c:var(--sky)}
+.bulb.on{background:var(--c);box-shadow:0 0 22px 5px color-mix(in srgb, var(--c) 55%, transparent)}
+
+/* Pruebas */
+.stations{display:grid;gap:16px}
+.card{display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2vw,26px);align-items:center;
+  padding:clamp(16px,2vw,24px) clamp(16px,2.4vw,30px);border:1px solid var(--line);border-radius:16px;background:rgba(20,50,41,.62)}
+.num{font-family:'Fraunces',Georgia,serif;font-size:clamp(30px,3.2vw,48px);color:var(--gold);min-width:1.4em;text-align:center;line-height:1}
+.name{font-size:clamp(19px,1.9vw,28px);font-weight:700}
+.state{font-size:clamp(14px,1.3vw,18px);color:var(--muted);margin-top:4px}
+.form{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+.answer{flex:1 1 240px;min-width:0;font:inherit;font-size:clamp(19px,1.9vw,28px);padding:12px 16px;border-radius:12px;
+  border:2px solid var(--line);background:#0a1d18;color:var(--cream)}
+.answer::placeholder{color:#5f7a6e}
+.answer:focus{outline:none;border-color:var(--gold)}
+button{font:inherit;cursor:pointer}
+.btn{font-weight:700;font-size:clamp(16px,1.6vw,23px);padding:12px 24px;border:0;border-radius:12px;background:var(--gold);color:#2a1c04}
+.btn:hover{filter:brightness(1.07)}
+.btn:focus-visible,.gear:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+.msg{min-height:1.5em;margin-top:10px;font-size:clamp(15px,1.4vw,20px);color:var(--muted)}
+.msg.err{color:#ff9aa6}
+.card.locked{opacity:.4}
+.card.solved{border-color:#3d6b57}
+.card.solved .num{color:var(--mint)}
+.card.solved .state{color:var(--mint);font-size:clamp(16px,1.6vw,22px)}
+.card.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+
+/* Final */
+.final{margin-top:48px;text-align:center;padding:clamp(28px,4vw,52px) 20px;border:1px solid var(--gold);border-radius:20px;
+  background:linear-gradient(180deg, rgba(224,172,76,.12), rgba(224,172,76,.02))}
+.final h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(30px,4vw,56px);margin:0 0 .2em}
+.final p{color:var(--muted);font-size:clamp(16px,1.6vw,23px);margin:.3em 0}
+.tiles{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(12px,2vw,26px);margin:30px 0 26px;perspective:800px}
+.tile{width:clamp(72px,9vw,136px);height:clamp(100px,12.5vw,180px);display:grid;place-items:center;border-radius:14px;
+  font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(52px,7.4vw,116px);background:var(--cream);color:var(--pine);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);animation:flip .8s both}
+@keyframes flip{from{transform:rotateX(90deg);opacity:0}to{transform:none;opacity:1}}
+
+.gear{position:fixed;right:14px;bottom:10px;opacity:.22;background:none;border:0;color:var(--cream);font-size:24px;padding:6px}
+.gear:hover{opacity:.85}
+.demo{margin-top:36px;text-align:center;color:var(--muted);font-size:14px}
+
+/* Panel de configuración */
+.modal{position:fixed;inset:0;background:rgba(3,12,9,.72);display:none;justify-content:center;align-items:flex-start;overflow:auto;padding:28px 12px;z-index:10}
+.modal.open{display:flex}
+.panel{background:#f7f2e7;color:#1c2925;width:100%;max-width:780px;border-radius:16px;padding:clamp(20px,3vw,32px)}
+.panel h2{font-family:'Fraunces',Georgia,serif;margin:0 0 4px;font-size:28px}
+.panel h3{margin:26px 0 8px;font-size:17px}
+.panel p.help{margin:4px 0 12px;color:#56645e;font-size:15px;line-height:1.45}
+.panel label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
+.panel input,.panel textarea{width:100%;font:inherit;font-size:16px;padding:9px 11px;border:1px solid #c9c1ae;border-radius:8px;background:#fff;color:#1c2925}
+.panel textarea{min-height:84px;font-family:ui-monospace,Menlo,monospace;font-size:13px;word-break:break-all}
+.row{display:grid;grid-template-columns:28px 1fr 1fr 36px;gap:8px;align-items:center;margin-bottom:8px}
+.row .i{font-weight:700;color:#8a6a2a;text-align:center}
+.x{border:1px solid #c9c1ae;background:#fff;border-radius:8px;height:40px;font-size:18px;color:#8b2b38}
+.pbtn{font-weight:700;border:0;border-radius:9px;padding:10px 16px;background:#1f4a3d;color:#fff;font-size:15px}
+.pbtn.alt{background:#e9e1cf;color:#1c2925}
+.pbtn.warn{background:#f3d9dc;color:#8b2b38}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.perr{color:#a3283a;font-weight:700;min-height:1.3em;margin-top:8px;font-size:14px}
+.pok{color:#1f6a4b;font-weight:700;min-height:1.3em;margin-top:8px;font-size:14px}
+.cols{display:grid;grid-template-columns:28px 1fr 1fr 36px;gap:8px;font-size:12px;color:#6b776f;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:560px){.row,.cols{grid-template-columns:22px 1fr 1fr 32px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
